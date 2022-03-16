@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Money</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <p>Your Gold: {{ request.session.gold }}</p>
+    <div class="location_form">
+        <h4>Farm</h4>
+        <p>(earns 10-20 golds)</p>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="location" value="farm">
+            <button type="submit">Find Gold!</button>
+        </form>
+    </div>
+    <div class="location_form">
+        <h4>Cave</h4>
+        <p>(earns 5-10 golds)</p>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="location" value="cave">
+            <button type="submit">Find Gold!</button>
+        </form>
+    </div>
+    <div class="location_form">
+        <h4>House</h4>
+        <p>(earns 2-5 golds)</p>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="location" value="house">
+            <button type="submit">Find Gold!</button>
+        </form>
+    </div>
+    <div class="location_form">
+        <h4>Casino</h4>
+        <p>(earns/takes 0-50 golds)</p>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="location" value="casino">
+            <button type="submit">Find Gold!</button>
+        </form>
+    </div>
+    <p>Activities:</p>
+    <div class="overflow-auto activities">
+        {% for v in activities %}
+            {% if lost in v %}
+                <p class="activity1">{{v}} {{date}}</p>
+            {% else %}
+                <p class="activity2">{{v}} {{date}}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

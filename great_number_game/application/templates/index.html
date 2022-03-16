@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Welcome to the Great Number Game!</h2>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+    {% if visit is None %}
+    <form action="/process" method="POST">
+        {% csrf_token %}
+        <input type="number" name='guess'>
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+    {% if guess > number %}
+        <h3 class="incorrect">Too high!</h3>
+        <form action="/process" method="POST">
+            {% csrf_token %}
+            <input type="number" name='guess'>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+    {% if guess < number %}
+        <h3 class="incorrect">Too low!</h3>
+        <form action="/process" method="POST">
+            {% csrf_token %}
+            <input type="number" name='guess'>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+    {% if visit is not None %}
+        {% if guess == number %} 
+            <div class="correct">
+                <h3>{{number}} was the number!</h3>
+                <form action="/clear">
+                    <button type="submit">Play again!</button>
+                </form>
+            </div>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

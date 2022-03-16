@@ -1,0 +1,27 @@
+.location_form{
+    display: inline-block;
+    width: 250px;
+    height: 200px;
+    text-align: center;
+    border: 2px black solid;
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+.activities{
+    border: 2px black solid;
+    width: 1050px;
+    height: 80px;
+}
+.activity1{
+    line-height: normal;
+    margin: 0;
+    font-size: 12px;
+    color: red;
+}
+
+.activity2{
+    line-height: normal;
+    margin: 0;
+    font-size: 12px;
+    color: green;
+}

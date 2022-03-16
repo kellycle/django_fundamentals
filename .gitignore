@@ -1,0 +1,14 @@
+.vscode
+env/
+venv/
+__pycache__/
+.vscode/
+db.sqlite3
+
+counter.zip
+dojo_survey.zip
+first_django_project
+first_django_project.zip
+great_number_game.zip
+ninja_gold.zip
+time_display.zip

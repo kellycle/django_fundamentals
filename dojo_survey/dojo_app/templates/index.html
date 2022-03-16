@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+    <div id="container">
+        <form action="/result" method="post">
+            {% csrf_token %}
+            Your Name: <input class="form-control" type="text" name="name">
+            Dojo Location: <select class="custom-select mr-sm-2" name="location" id="location">
+                <option value="San Jose">San Jose</option>
+                <option value="Bellevue">Bellevue</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Oakland">Oakland</option>
+            </select>
+            Favorite Language: <select class="custom-select mr-sm-2" name="program_language" id="program_language">
+                <option value="Python">Python</option>
+                <option value="C#">C#</option>
+                <option value="Java">Java</option>
+            </select>
+            <label for="comment">Comment (optional):</label>
+            <textarea class="form-control" name="comment" id="comment" cols="30" rows="5"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
